@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pertemuan7</string>
+    <string name="back_button">kembali</string>
+    <string name="confirm">konfirmasi</string>
+    <string name="next">lanjut</string>
+    <string name="cancel">batal</string>
+    <string name="vanilla">Vanila</string>
+    <string name="lemon">Lemon</string>
+    <string name="natural">Natural</string>
+    <string name="milk">Milky</string>
+    <string name="lyche">Lychee</string>
+    <string name="order_summary">Ringkasan Order</string>
+    <string name="send">Send order to another app</string>
+    <string name="quantity">jumlah</string>
+    <string name="flavor">rasa</string>
+    <string name="subtotal_price">Subtotal : Rp %s</string>
+    <string name="total_price">Total %s</string>
+    <string name="namaPelanggan">Nama</string>
+    <string name="noTelepon">NoTelp</string>
+    <string name="Alamat">alamat</string>
+</resources>
