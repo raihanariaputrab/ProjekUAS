@@ -31,6 +31,8 @@ enum class PengelolaHalaman {
     Rasa,
     Summary,
     Pelanggan,
+    RentalMenuPage,
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -92,6 +94,7 @@ fun EsJumboApp(
                     },
                 )
             }
+
             composable(route = PengelolaHalaman.Rasa.name){
                 val context = LocalContext.current
                 HalamanSatu(
@@ -110,6 +113,8 @@ fun EsJumboApp(
         }
     }
 }
+
+
 private fun cancelOrderAndNavigateToHome(
     viewModel: OrderViewModel,
     navController: NavHostController

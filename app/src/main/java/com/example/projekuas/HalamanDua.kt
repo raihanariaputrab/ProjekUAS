@@ -32,7 +32,7 @@ fun HalamanDua(
         Pair(stringResource(R.string.noTelepon), orderUIState.nomorTelepon),
         Pair(stringResource(R.string.Alamat), orderUIState.alamat),
         Pair(stringResource(R.string.quantity), orderUIState.jumlah),
-        Pair(stringResource(R.string.flavor), orderUIState.rasa)
+        Pair(stringResource(R.string.alat), orderUIState.alat)
     )
     Column (
         modifier = modifier,

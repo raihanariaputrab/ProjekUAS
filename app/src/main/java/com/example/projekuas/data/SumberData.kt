@@ -4,10 +4,10 @@ import com.example.projekuas.R
 
 object SumberData {
     val flavors = listOf(
-        R.string.natural,
-        R.string.vanilla,
-        R.string.lemon,
-        R.string.milk,
-        R.string.lyche,
+        R.string.LensaTele,
+        R.string.LensaKit,
+        R.string.LensaFix,
+        R.string.LensaSapuJagad,
+        R.string.LensaPrime,
     )
 }

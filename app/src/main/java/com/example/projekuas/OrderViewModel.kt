@@ -33,7 +33,7 @@ class OrderViewModel : ViewModel() {
 
     fun setRasa(rasaPilihan: String){
         _stateUI.update { stateSaatIni ->
-            stateSaatIni.copy(rasa = rasaPilihan)
+            stateSaatIni.copy(alat = rasaPilihan)
         }
     }
 
