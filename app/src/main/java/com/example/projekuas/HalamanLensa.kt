@@ -31,8 +31,8 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HalamanSatu(
-    pilihanRasa: List<String>,
+fun HalamanLensa(
+    pilihanLensa: List<String>,
     onSelectionChanged: (String) -> Unit,
     onConfirmButtonClicked: (Int) -> Unit,
     onNextButtonClicked: () -> Unit,
@@ -40,26 +40,26 @@ fun HalamanSatu(
     modifier: Modifier = Modifier
 )
 {
-    var rasaYgDipilih by rememberSaveable{ mutableStateOf("")}
-    var textJmlBeli by remember { mutableStateOf("") }
+    var lensaYgDipilih by rememberSaveable{ mutableStateOf("")}
+    var textJmlSewa by remember { mutableStateOf("") }
 
     Column (modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween){
         Column (modifier =
         Modifier.padding(dimensionResource(R.dimen.padding_medium))){
-            pilihanRasa.forEach{ item->
+            pilihanLensa.forEach{ item->
                 Row(modifier = Modifier.selectable(
-                    selected = rasaYgDipilih == item,
+                    selected = lensaYgDipilih == item,
                     onClick = {
-                        rasaYgDipilih = item
+                        lensaYgDipilih = item
                         onSelectionChanged(item)
                     }
                 ),
                     verticalAlignment = Alignment.CenterVertically){
 
-                    RadioButton(selected = rasaYgDipilih == item,
+                    RadioButton(selected = lensaYgDipilih == item,
                         onClick = {
-                            rasaYgDipilih = item
+                            lensaYgDipilih = item
                             onSelectionChanged(item) }
                     )
                     Text(item)
@@ -77,7 +77,7 @@ fun HalamanSatu(
                 horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
             ){
                 OutlinedTextField(
-                    value = textJmlBeli,
+                    value = textJmlSewa,
                     singleLine = true,
                     shape = MaterialTheme.shapes.large,
                     keyboardOptions = KeyboardOptions(
@@ -85,14 +85,14 @@ fun HalamanSatu(
                     modifier = Modifier.width(150.dp),
                     label = { Text(text = "Jumlah Order")},
                     onValueChange = {
-                        textJmlBeli = it
+                        textJmlSewa = it
                     }
                 )
                 Button(
                     modifier = Modifier.weight(1f),
                     //the button is enabled when the user makes a selection
-                    enabled = textJmlBeli.isNotEmpty(),
-                    onClick = { onConfirmButtonClicked(textJmlBeli.toInt())}
+                    enabled = textJmlSewa.isNotEmpty(),
+                    onClick = { onConfirmButtonClicked(textJmlSewa.toInt())}
                 ) {
                     Text(stringResource(R.string.confirm))
                 }
@@ -119,7 +119,7 @@ fun HalamanSatu(
                 Button(
                     modifier = Modifier.weight(1f),
                     //the button is enabled when the user makes a selection
-                    enabled = textJmlBeli.isNotEmpty(),
+                    enabled = textJmlSewa.isNotEmpty(),
                     onClick = onNextButtonClicked
                 ){
                     Text(stringResource(R.string.next))

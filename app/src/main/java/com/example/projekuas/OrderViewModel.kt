@@ -31,9 +31,14 @@ class OrderViewModel : ViewModel() {
         }
     }
 
-    fun setRasa(rasaPilihan: String){
+    fun setKamera(pilihanKamera: String){
         _stateUI.update { stateSaatIni ->
-            stateSaatIni.copy(alat = rasaPilihan)
+            stateSaatIni.copy(alat = pilihanKamera)
+        }
+    }
+    fun setLensa(pilihanLensa: String){
+        _stateUI.update { stateSaatIni ->
+            stateSaatIni.copy(alat = pilihanLensa)
         }
     }
 

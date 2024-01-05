@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun HalamanUtama(
-    onNextButtonClicked: () -> Unit
+    onNextButton1Clicked: () -> Unit,
 ) {
     val image = painterResource(id = R.drawable.logokam2)
     Column(
@@ -87,7 +87,7 @@ fun HalamanUtama(
             }
         }
         Button(
-            onClick = onNextButtonClicked,
+            onClick = onNextButton1Clicked,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)

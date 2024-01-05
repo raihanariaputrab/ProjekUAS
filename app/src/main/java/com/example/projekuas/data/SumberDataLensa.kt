@@ -2,8 +2,8 @@ package com.example.projekuas.data
 
 import com.example.projekuas.R
 
-object SumberData {
-    val flavors = listOf(
+object SumberDataLensa {
+    val lensa = listOf(
         R.string.LensaTele,
         R.string.LensaKit,
         R.string.LensaFix,
@@ -11,3 +11,4 @@ object SumberData {
         R.string.LensaPrime,
     )
 }
+

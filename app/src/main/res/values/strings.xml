@@ -8,6 +8,11 @@
     <string name="LensaTele">Lensa Tele</string>
     <string name="LensaKit">Lensa Kit</string>
     <string name="LensaFix">Lensa Fix</string>
+    <string name="Kamera1">Kamera 1</string>
+    <string name="Kamera2">Kamera 2</string>
+    <string name="Kamera3">Kamera 3</string>
+    <string name="Kamera4">Kamera 4</string>
+    <string name="Kamera5">Kamera 5</string>
     <string name="LensaSapuJagad">Lensa Sapu Jagad</string>
     <string name="order_summary">Ringkasan Order</string>
     <string name="send">Send order to another app</string>

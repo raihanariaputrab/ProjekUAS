@@ -17,21 +17,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.projekuas.data.SumberData.flavors
+import com.example.projekuas.data.SumberDataKamera.kamera
+import com.example.projekuas.data.SumberDataLensa.lensa
 
 enum class PengelolaHalaman {
     Home,
-    Rasa,
+    Lensa,
+    Kamera,
+    Menu,
     Summary,
     Pelanggan,
-    RentalMenuPage,
 
 }
 
@@ -65,14 +65,15 @@ fun EsJumboAppBar(
 fun EsJumboApp(
     viewModel: OrderViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
-){
-    Scaffold (
+) {
+    Scaffold(
         topBar = {
             EsJumboAppBar(
                 bisaNavigasiBack = false,
-                navigasiUp = { })
+                navigasiUp = { }
+            )
         }
-    ){innerPadding ->
+    ) { innerPadding ->
         val uiState by viewModel.stateUI.collectAsState()
         NavHost(
             navController = navController,
@@ -81,28 +82,51 @@ fun EsJumboApp(
         ) {
             composable(route = PengelolaHalaman.Home.name) {
                 HalamanUtama(
-                    onNextButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) })
+                    onNextButton1Clicked = {
+                        navController.navigate(PengelolaHalaman.Menu.name)
+                    }
+                )
+            }
+            composable(route = PengelolaHalaman.Menu.name) {
+                HalamanMenu(
+                    onNextButtonClicked = {
+                        navController.navigate(PengelolaHalaman.Lensa.name)
+                    },
+                    onNextButton2Clicked = {
+                        navController.navigate(PengelolaHalaman.Kamera.name)
+                    }
+                )
             }
             composable(route = PengelolaHalaman.Pelanggan.name) {
                 Pelanggan(
                     onConfirmButtonClicked = { nama, nomor, alamat ->
                         viewModel.setPelanggan(nama, nomor, alamat)
-                        navController.navigate(PengelolaHalaman.Rasa.name)
                     },
                     onCancelButtonClicked = {
                         navController.navigate(PengelolaHalaman.Home.name)
-                    },
+                    }
                 )
             }
 
-            composable(route = PengelolaHalaman.Rasa.name){
+            composable(route = PengelolaHalaman.Lensa.name) {
                 val context = LocalContext.current
-                HalamanSatu(
-                    pilihanRasa = flavors.map { id -> context.resources.getString(id) },
-                    onSelectionChanged = {viewModel.setRasa(it)},
-                    onConfirmButtonClicked = {viewModel.setJumlah(it)} ,
+                HalamanLensa(
+                    pilihanLensa = lensa.map { id -> context.resources.getString(id) },
+                    onSelectionChanged = { viewModel.setLensa(it) },
+                    onConfirmButtonClicked = { viewModel.setJumlah(it) },
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
-                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) })
+                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) }
+                )
+            }
+            composable(route = PengelolaHalaman.Kamera.name) {
+                val context = LocalContext.current
+                HalamanKamera(
+                    pilihanKamera = kamera.map { id -> context.resources.getString(id) },
+                    onSelectionChanged = { viewModel.setKamera(it) },
+                    onConfirmButtonClicked = { viewModel.setJumlah(it) },
+                    onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
+                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) }
+                )
             }
             composable(route = PengelolaHalaman.Summary.name) {
                 HalamanDua(
@@ -125,5 +149,5 @@ private fun cancelOrderAndNavigateToHome(
 private fun cancelOrderAndNavigateToRasa(
     navController: NavHostController
 ){
-    navController.popBackStack(PengelolaHalaman.Rasa.name, inclusive = false)
+    navController.popBackStack(PengelolaHalaman.Lensa.name, inclusive = false)
 }
