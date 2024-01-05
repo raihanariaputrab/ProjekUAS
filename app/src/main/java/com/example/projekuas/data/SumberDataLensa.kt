@@ -4,11 +4,11 @@ import com.example.projekuas.R
 
 object SumberDataLensa {
     val lensa = listOf(
-        R.string.LensaTele,
-        R.string.LensaKit,
-        R.string.LensaFix,
-        R.string.LensaSapuJagad,
-        R.string.LensaPrime,
+        R.string.Lensa16mm,
+        R.string.Lensa24mm,
+        R.string.Lensa50mm,
+        R.string.Lensa85mm,
+        R.string.Lensa100mm,
     )
 }
 

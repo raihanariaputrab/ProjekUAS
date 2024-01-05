@@ -4,16 +4,16 @@
     <string name="confirm">konfirmasi</string>
     <string name="next">lanjut</string>
     <string name="cancel">batal</string>
-    <string name="LensaPrime">Lensa Prime</string>
-    <string name="LensaTele">Lensa Tele</string>
-    <string name="LensaKit">Lensa Kit</string>
-    <string name="LensaFix">Lensa Fix</string>
-    <string name="Kamera1">Kamera 1</string>
-    <string name="Kamera2">Kamera 2</string>
-    <string name="Kamera3">Kamera 3</string>
-    <string name="Kamera4">Kamera 4</string>
-    <string name="Kamera5">Kamera 5</string>
-    <string name="LensaSapuJagad">Lensa Sapu Jagad</string>
+    <string name="Lensa16mm">Lensa 16mm</string>
+    <string name="Lensa24mm">Lensa 24mm</string>
+    <string name="Lensa50mm">Lensa 50mm</string>
+    <string name="Lensa85mm">Lensa 85mm</string>
+    <string name="Lensa100mm">Lensa 100mm</string>
+    <string name="KameraSony">Kamera Sony</string>
+    <string name="KameraCanon">Kamera Canon</string>
+    <string name="KameraNikon">Kamera Nikon</string>
+    <string name="KameraFujifilm">Kamera Fujifilm</string>
+    <string name="KameraLumix">Kamera Lumix</string>
     <string name="order_summary">Ringkasan Order</string>
     <string name="send">Send order to another app</string>
     <string name="quantity">jumlah</string>
@@ -23,4 +23,6 @@
     <string name="namaPelanggan">Nama</string>
     <string name="noTelepon">NoTelp</string>
     <string name="Alamat">alamat</string>
+    <string name="nextkamera">Kamera</string>
+    <string name="nextlensa">Lensa</string>
 </resources>

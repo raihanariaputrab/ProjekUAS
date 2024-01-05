@@ -31,7 +31,8 @@ fun HalamanMenu(
     onNextButtonClicked: () -> Unit,
     onNextButton2Clicked: () -> Unit
 ) {
-    val image = painterResource(id = R.drawable.logokam2)
+    val kamera = painterResource(id = R.drawable.kamera)
+    val lensa = painterResource(id = R.drawable.lensa)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -57,8 +58,16 @@ fun HalamanMenu(
                         .fillMaxSize()
                         .padding(16.dp)
                 ) {
+                    Text(
+                        text = "Mau Sewa Apa Hari ini?",
+                        color = Color.Black,
+                        fontFamily = FontFamily.Cursive,
+                        fontSize = 28.sp,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(75.dp))
                     Image(
-                        painter = image,
+                        painter = kamera,
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -68,68 +77,65 @@ fun HalamanMenu(
                             .padding(8.dp)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "Hidayat",
-                        color = Color.Gray,
-                        fontFamily = FontFamily.Cursive,
-                        fontSize = 28.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    Button(
+                        onClick = onNextButton2Clicked,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .background(MaterialTheme.colorScheme.primary)
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(R.string.nextkamera),
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ArrowForward,
+                                contentDescription = null,
+                                tint = Color.White
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(25.dp))
+                    Image(
+                        painter = lensa,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(120.dp)
+                            .clip(MaterialTheme.shapes.medium)
+                            .background(MaterialTheme.colorScheme.primary)
+                            .padding(8.dp)
                     )
-                    Text(
-                        text = "Sewa Kamera",
-                        color = MaterialTheme.colorScheme.primary,
-                        fontFamily = FontFamily.Cursive,
-                        fontStyle = FontStyle.Italic,
-                        fontSize = 32.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Button(
+                        onClick = onNextButtonClicked,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .background(MaterialTheme.colorScheme.primary)
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(R.string.nextlensa),
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ArrowForward,
+                                contentDescription = null,
+                                tint = Color.White
+                            )
+                        }
+                    }
                 }
-            }
-        }
-        Button(
-            onClick = onNextButton2Clicked,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .background(MaterialTheme.colorScheme.primary)
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.next),
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            }
-        }
-        Button(
-            onClick = onNextButtonClicked,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .background(MaterialTheme.colorScheme.primary)
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.next),
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = null,
-                    tint = Color.White
-                )
             }
         }
     }

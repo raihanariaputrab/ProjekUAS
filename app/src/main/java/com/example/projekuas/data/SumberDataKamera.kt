@@ -4,10 +4,10 @@ import com.example.projekuas.R
 
 object SumberDataKamera {
     val kamera = listOf(
-        R.string.Kamera1,
-        R.string.Kamera2,
-        R.string.Kamera3,
-        R.string.Kamera4,
-        R.string.Kamera5,
+        R.string.KameraSony,
+        R.string.KameraCanon,
+        R.string.KameraNikon,
+        R.string.KameraFujifilm,
+        R.string.KameraLumix,
     )
 }

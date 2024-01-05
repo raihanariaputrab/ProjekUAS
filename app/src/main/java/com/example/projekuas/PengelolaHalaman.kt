@@ -83,7 +83,18 @@ fun EsJumboApp(
             composable(route = PengelolaHalaman.Home.name) {
                 HalamanUtama(
                     onNextButton1Clicked = {
+                        navController.navigate(PengelolaHalaman.Pelanggan.name)
+                    }
+                )
+            }
+            composable(route = PengelolaHalaman.Pelanggan.name) {
+                Pelanggan(
+                    onConfirmButtonClicked = { nama, nomor, alamat ->
+                        viewModel.setPelanggan(nama, nomor, alamat)
                         navController.navigate(PengelolaHalaman.Menu.name)
+                    },
+                    onCancelButtonClicked = {
+                        navController.navigate(PengelolaHalaman.Home.name)
                     }
                 )
             }
@@ -97,16 +108,7 @@ fun EsJumboApp(
                     }
                 )
             }
-            composable(route = PengelolaHalaman.Pelanggan.name) {
-                Pelanggan(
-                    onConfirmButtonClicked = { nama, nomor, alamat ->
-                        viewModel.setPelanggan(nama, nomor, alamat)
-                    },
-                    onCancelButtonClicked = {
-                        navController.navigate(PengelolaHalaman.Home.name)
-                    }
-                )
-            }
+
 
             composable(route = PengelolaHalaman.Lensa.name) {
                 val context = LocalContext.current
@@ -115,7 +117,7 @@ fun EsJumboApp(
                     onSelectionChanged = { viewModel.setLensa(it) },
                     onConfirmButtonClicked = { viewModel.setJumlah(it) },
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
-                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) }
+                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Menu.name) }
                 )
             }
             composable(route = PengelolaHalaman.Kamera.name) {
@@ -125,7 +127,7 @@ fun EsJumboApp(
                     onSelectionChanged = { viewModel.setKamera(it) },
                     onConfirmButtonClicked = { viewModel.setJumlah(it) },
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
-                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Pelanggan.name) }
+                    onCancelButtonClicked = { navController.navigate(PengelolaHalaman.Menu.name) }
                 )
             }
             composable(route = PengelolaHalaman.Summary.name) {
