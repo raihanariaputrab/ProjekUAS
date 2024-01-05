@@ -40,7 +40,7 @@ fun Pelanggan(
             label = { Text(text = "Nama Pelanggan") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
+                .padding(bottom = 18.dp),
         )
         OutlinedTextField(
             value = nomorTelepon,
