@@ -43,8 +43,8 @@ import kotlinx.coroutines.launch
 object DetailDestination : DestinasiNavigasi {
     override val route = "item_details"
     override val titleRes = "Detail Pelanggan"
-    const val kontakId = "itemId"
-    val routeWithArgs = "$route/{$kontakId}"
+    const val pelangganId = "itemId"
+    val routeWithArgs = "$route/{$pelangganId}"
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

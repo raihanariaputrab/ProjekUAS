@@ -21,7 +21,7 @@ class DetailPelangganViewModel(
         private const val TIMEOUT_MILLIS = 5_000L
     }
 
-    val pelangganId: String = checkNotNull(savedStateHandle[DetailDestination.kontakId])
+    val pelangganId: String = checkNotNull(savedStateHandle[DetailDestination.pelangganId])
 
     val uiState: StateFlow<DetailUIState> =
         repository.getPelangganById(pelangganId)
