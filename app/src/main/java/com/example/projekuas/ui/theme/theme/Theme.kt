@@ -1,4 +1,4 @@
-package com.example.projekuas.ui.theme
+package com.example.projekuas.ui.theme.theme
 
 import android.app.Activity
 import android.os.Build

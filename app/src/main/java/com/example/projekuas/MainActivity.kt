@@ -10,8 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.projekuas.ui.theme.ProjekUASTheme
-import kotlin.math.E
+import com.example.projekuas.navigation.PengelolaHalaman
+import com.example.projekuas.ui.theme.theme.ProjekUASTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EsJumboApp()
+                    PengelolaHalaman()
                 }
             }
         }

@@ -7,4 +7,6 @@ data class OrderUiState(
     val namaPelanggan: String = "",
     val nomorTelepon: String = "",
     val alamat: String = ""
-)
+){
+    constructor(): this(0,"","","", "", "",)
+}
