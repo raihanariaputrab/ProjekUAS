@@ -24,8 +24,8 @@ class PelangganRepositoryImpl(private val firestore: FirebaseFirestore) : SewaRe
             .orderBy("namaPelanggan", Query.Direction.ASCENDING)
             .get()
             .await()
-        val kontak = snapshot.toObjects(Pelanggan::class.java)
-        emit(kontak)
+        val pelanggan = snapshot.toObjects(Pelanggan::class.java)
+        emit(pelanggan)
     }.flowOn(Dispatchers.IO)
 
     override suspend fun save(pelanggan: Pelanggan): String {
@@ -33,7 +33,7 @@ class PelangganRepositoryImpl(private val firestore: FirebaseFirestore) : SewaRe
             val documentReference = firestore.collection("Pelanggan").add(pelanggan).await()
             // Update the Kontak with the Firestore-generated DocumentReference
             firestore.collection("Pelanggan").document(documentReference.id)
-                .set(pelanggan.copy(IdPelanggan = documentReference.id))
+                .set(pelanggan.copy(idPelanggan = documentReference.id))
             "Berhasil + ${documentReference.id}"
         } catch (e: Exception) {
             Log.w(ContentValues.TAG, "Error adding document", e)
@@ -42,7 +42,7 @@ class PelangganRepositoryImpl(private val firestore: FirebaseFirestore) : SewaRe
     }
 
     override suspend fun update(pelanggan: Pelanggan) {
-        firestore.collection("Pelanggan").document(pelanggan.IdPelanggan).set(pelanggan).await()
+        firestore.collection("Pelanggan").document(pelanggan.idPelanggan).set(pelanggan).await()
     }
 
     override suspend fun delete(pelangganId: String) {

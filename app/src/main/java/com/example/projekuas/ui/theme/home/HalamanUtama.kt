@@ -1,4 +1,4 @@
-package com.example.projekuas.home
+package com.example.projekuas.ui.theme.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -25,10 +25,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.projekuas.R
+import com.example.projekuas.navigation.DestinasiNavigasi
 
+
+object DestinasiUtama : DestinasiNavigasi {
+    override val route ="halamanUtama"
+    override val titleRes = "Utama"
+}
 @Composable
 fun HalamanUtama(
-    onNextButton1Clicked: () -> Unit,
+    onNextButtonClicked: () -> Unit,
 ) {
     val image = painterResource(id = R.drawable.logokam2)
     Column(
@@ -94,7 +100,7 @@ fun HalamanUtama(
             }
         }
         Button(
-            onClick = onNextButton1Clicked,
+            onClick = onNextButtonClicked,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)

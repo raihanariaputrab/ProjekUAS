@@ -1,4 +1,4 @@
-package com.example.projekuas.HalamanHomeView
+package com.example.projekuas.ui.theme.HalamanHomeView
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -92,7 +92,7 @@ fun BodyHome(
     ) {
         if (itemPelanggan.isEmpty()) {
             Text(
-                text = "Tidak ada data Kontak",
+                text = "Tidak ada data Pelanggan",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge
             )
@@ -101,7 +101,7 @@ fun BodyHome(
                 itemPelanggan = itemPelanggan,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
-                onItemClick = { onSiswaClick(it.IdPelanggan) }
+                onItemClick = { onSiswaClick(it.idPelanggan) }
             )
         }
     }
@@ -152,16 +152,7 @@ fun DataPelanggan(
             )
             Spacer(Modifier.weight(1f))
             Text(
-                text = pelanggan.alamat,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(Modifier.weight(1f))
-            Text(
-                text = pelanggan.sewaAlat,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = pelanggan.harga,
+                text = pelanggan.alamatPelanggan,
                 style = MaterialTheme.typography.titleMedium
             )
         }

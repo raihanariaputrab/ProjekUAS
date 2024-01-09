@@ -8,14 +8,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.projekuas.AddPelanggan.DestinasiEntry
-import com.example.projekuas.AddPelanggan.HalamanPelanggan
-import com.example.projekuas.DetailPelanggan.DetailDestination
-import com.example.projekuas.DetailPelanggan.DetailScreen
-import com.example.projekuas.EditPelanggan.EditDestination
-import com.example.projekuas.EditPelanggan.EditScreen
-import com.example.projekuas.HalamanHomeView.DestinasiHome
-import com.example.projekuas.HalamanHomeView.HomeScreen
+import com.example.projekuas.ui.theme.AddPelanggan.DestinasiEntry
+import com.example.projekuas.ui.theme.AddPelanggan.HalamanPelanggan
+import com.example.projekuas.ui.theme.DetailPelangga.DetailDestination
+import com.example.projekuas.ui.theme.DetailPelangga.DetailScreen
+import com.example.projekuas.ui.theme.EditPelanggan.EditDestination
+import com.example.projekuas.ui.theme.EditPelanggan.EditScreen
+import com.example.projekuas.ui.theme.HalamanHomeView.DestinasiHome
+import com.example.projekuas.ui.theme.HalamanHomeView.HomeScreen
+import com.example.projekuas.ui.theme.home.DestinasiUtama
+import com.example.projekuas.ui.theme.home.HalamanUtama
 
 
 @Composable
@@ -23,15 +25,20 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
 
     NavHost(
         navController = navController,
-        startDestination = DestinasiHome.route,
+        startDestination = DestinasiUtama.route,
         modifier = Modifier
     ) {
+        composable(DestinasiUtama.route) {
+            HalamanUtama(onNextButtonClicked = {
+                navController.navigate(DestinasiHome.route)
+            })
+
+        }
         composable(
             DestinasiHome.route
         ) {
-            HomeScreen(navigateToItemEntry = {
-                navController.navigate(DestinasiEntry.route)
-            },
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
                 onDetailClick = { itemId ->
                     navController.navigate("${DetailDestination.route}/$itemId")
                     println("itemId: $itemId")
@@ -46,11 +53,11 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
 
         composable(
             route = DetailDestination.routeWithArgs,
-            arguments = listOf(navArgument(DetailDestination.pelangganId) {
+            arguments = listOf(navArgument(DetailDestination.IdPelanggan) {
                 type = NavType.StringType
             })
         ) { backStackEntry ->
-            val pelangganId = backStackEntry.arguments?.getString(DetailDestination.pelangganId)
+            val pelangganId = backStackEntry.arguments?.getString(DetailDestination.IdPelanggan)
             pelangganId?.let {
                 DetailScreen(
                     navigateBack = { navController.popBackStack() },

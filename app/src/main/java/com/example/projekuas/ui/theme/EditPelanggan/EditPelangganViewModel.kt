@@ -1,4 +1,4 @@
-package com.example.projekuas.EditPelanggan
+package com.example.projekuas.ui.theme.EditPelanggan
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

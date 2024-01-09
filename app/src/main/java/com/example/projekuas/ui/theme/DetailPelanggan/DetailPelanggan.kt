@@ -1,4 +1,4 @@
-package com.example.projekuas.DetailPelanggan
+package com.example.projekuas.ui.theme.DetailPelangga
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,15 +36,16 @@ import com.example.projekuas.Model.Pelanggan
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.DetailUIState
+import com.example.projekuas.ui.theme.DetailViewMoedlPelanggan.DetailPelangganViewModel
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 import com.example.projekuas.ui.theme.toPelanggan
 import kotlinx.coroutines.launch
 
 object DetailDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = "Detail Kontak"
-    const val pelangganId = "itemId"
-    val routeWithArgs = "$route/{$pelangganId}"
+    override val titleRes = "Detail Pelanggan"
+    const val IdPelanggan = "itemId"
+    val routeWithArgs = "$route/{$IdPelanggan}"
 }
 
 
@@ -133,6 +134,8 @@ private fun ItemDetailsBody(
         }
     }
 }
+
+
 @Composable
 fun ItemDetails(
     pelanggan: Pelanggan, modifier: Modifier = Modifier
@@ -158,28 +161,14 @@ fun ItemDetails(
             )
             ItemDetailsRow(
                 labelResID = "Alamat",
-                itemDetail = pelanggan.alamat,
+                itemDetail = pelanggan.alamatPelanggan,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
             )
             ItemDetailsRow(
                 labelResID ="No. Telpon",
-                itemDetail = pelanggan.namaPelanggan,
-                modifier = Modifier.padding(
-                    horizontal = 12.dp
-                )
-            )
-            ItemDetailsRow(
-                labelResID ="Sewa Alat",
-                itemDetail = pelanggan.sewaAlat,
-                modifier = Modifier.padding(
-                    horizontal = 12.dp
-                )
-            )
-            ItemDetailsRow(
-                labelResID ="Harga",
-                itemDetail = pelanggan.harga,
+                itemDetail = pelanggan.nomorTelepon,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
@@ -188,6 +177,7 @@ fun ItemDetails(
 
     }
 }
+
 @Composable
 private fun ItemDetailsRow(
     labelResID: String, itemDetail: String, modifier: Modifier = Modifier
@@ -198,6 +188,7 @@ private fun ItemDetailsRow(
         Text(text = itemDetail, fontWeight = FontWeight.Bold)
     }
 }
+
 @Composable
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier

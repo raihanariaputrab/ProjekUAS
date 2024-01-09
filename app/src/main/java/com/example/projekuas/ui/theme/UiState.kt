@@ -8,20 +8,17 @@ data class AddUIState(
 
 data class DetailPelanggan(
     val IdPelanggan: String = "",
-    val namaPelanggan: String = "",
-    val nomorTelepon: String = "",
-    val alamat: String = "",
-    val sewaAlat: String = "",
-    val harga: String = ""
+    val NamaPelanggan: String = "",
+    val NomorTelepon: String = "",
+    val Alamat: String = ""
 )
 
 fun DetailPelanggan.toPelanggan() = Pelanggan(
-    IdPelanggan = IdPelanggan,
-    namaPelanggan = namaPelanggan,
-    alamat = alamat,
-    nomorTelepon = nomorTelepon,
-    sewaAlat = sewaAlat,
-    harga = harga
+    idPelanggan = IdPelanggan,
+    namaPelanggan = NamaPelanggan,
+    alamatPelanggan = Alamat,
+    nomorTelepon = NomorTelepon,
+
 )
 
 data class DetailUIState(
@@ -30,12 +27,11 @@ data class DetailUIState(
 
 fun Pelanggan.toDetailPelanggan(): DetailPelanggan =
     DetailPelanggan(
-        IdPelanggan = IdPelanggan,
-        namaPelanggan = namaPelanggan,
-        alamat = alamat,
-        nomorTelepon = nomorTelepon,
-        sewaAlat = sewaAlat,
-        harga = harga
+        IdPelanggan = idPelanggan,
+        NamaPelanggan = namaPelanggan,
+        Alamat = alamatPelanggan,
+        NomorTelepon = nomorTelepon,
+
     )
 
 fun Pelanggan.toUIStatePelanggan(): AddUIState = AddUIState(

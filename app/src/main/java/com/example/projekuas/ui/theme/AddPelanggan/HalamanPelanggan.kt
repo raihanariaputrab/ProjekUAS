@@ -1,4 +1,4 @@
-package com.example.projekuas.AddPelanggan
+package com.example.projekuas.ui.theme.AddPelanggan
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
-    override val titleRes = "Entry Siswa"
+    override val titleRes = "Isi Data Untuk Booking"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -102,24 +102,24 @@ fun FormInput(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         OutlinedTextField(
-            value = detailPelanggan.namaPelanggan,
-            onValueChange = { onValueChange(detailPelanggan.copy(namaPelanggan = it)) },
+            value = detailPelanggan.NamaPelanggan,
+            onValueChange = { onValueChange(detailPelanggan.copy(NamaPelanggan = it)) },
             label = { Text("Nama") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = detailPelanggan.alamat,
-            onValueChange = { onValueChange(detailPelanggan.copy(alamat = it)) },
+            value = detailPelanggan.Alamat,
+            onValueChange = { onValueChange(detailPelanggan.copy(Alamat = it)) },
             label = { Text("Alamat") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = detailPelanggan.nomorTelepon,
-            onValueChange = { onValueChange(detailPelanggan.copy(nomorTelepon = it)) },
+            value = detailPelanggan.NomorTelepon,
+            onValueChange = { onValueChange(detailPelanggan.copy(NomorTelepon = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             label = { Text(text = "Telepon") },
             modifier = Modifier.fillMaxWidth(),

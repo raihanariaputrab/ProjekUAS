@@ -1,4 +1,4 @@
-package com.example.projekuas.EditPelanggan
+package com.example.projekuas.ui.theme.EditPelanggan
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.projekuas.AddPelanggan.EntryBody
+import com.example.projekuas.ui.theme.AddPelanggan.EntryBody
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.PelangganTopAppBar
@@ -20,7 +20,7 @@ object EditDestination : DestinasiNavigasi {
     override val route = "item_edit"
     override val titleRes ="Edit Kontak"
     const val pelangganId = "itemId"
-    val routeWithArgs = "${EditDestination.route}/{$pelangganId}"
+    val routeWithArgs = "$route/{$pelangganId}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +35,7 @@ fun EditScreen(
     Scaffold(
         topBar = {
             PelangganTopAppBar(
-                title =EditDestination.titleRes,
+                title = EditDestination.titleRes,
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )

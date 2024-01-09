@@ -1,9 +1,10 @@
-package com.example.projekuas.DetailPelanggan
+package com.example.projekuas.ui.theme.DetailViewMoedlPelanggan
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projekuas.database.SewaRepository
+import com.example.projekuas.ui.theme.DetailPelangga.DetailDestination
 import com.example.projekuas.ui.theme.DetailUIState
 import com.example.projekuas.ui.theme.toDetailPelanggan
 import kotlinx.coroutines.flow.SharingStarted
@@ -21,7 +22,7 @@ class DetailPelangganViewModel(
         private const val TIMEOUT_MILLIS = 5_000L
     }
 
-    val pelangganId: String = checkNotNull(savedStateHandle[DetailDestination.pelangganId])
+    val pelangganId: String = checkNotNull(savedStateHandle[DetailDestination.IdPelanggan])
 
     val uiState: StateFlow<DetailUIState> =
         repository.getPelangganById(pelangganId)
