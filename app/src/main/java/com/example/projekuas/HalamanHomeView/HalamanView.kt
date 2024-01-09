@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -31,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.Model.Pelanggan
-import com.example.projekuas.PenyediaViewModel
+import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 

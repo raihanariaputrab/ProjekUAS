@@ -27,14 +27,14 @@ class DetailPelangganViewModel(
         repository.getPelangganById(pelangganId)
             .filterNotNull()
             .map {
-                DetailUIState(addEvent = it.toDetailPelanggan())
+                DetailUIState(detailPelanggan = it.toDetailPelanggan())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
                 initialValue = DetailUIState()
             )
 
-    suspend fun deleteKontak() {
+    suspend fun deletePelanggan() {
         repository.delete(pelangganId)
 
     }

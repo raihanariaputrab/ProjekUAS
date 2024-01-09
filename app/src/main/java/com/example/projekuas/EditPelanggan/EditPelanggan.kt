@@ -11,7 +11,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.AddPelanggan.EntryBody
-import com.example.projekuas.PenyediaViewModel
+import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 import kotlinx.coroutines.launch

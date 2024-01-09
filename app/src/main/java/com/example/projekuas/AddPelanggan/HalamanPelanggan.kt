@@ -12,7 +12,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.projekuas.PenyediaViewModel
+import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.AddUIState
 import com.example.projekuas.ui.theme.DetailPelanggan
@@ -23,6 +23,7 @@ object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Siswa"
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HalamanPelanggan(
@@ -62,6 +63,7 @@ fun HalamanPelanggan(
         )
     }
 }
+
 @Composable
 fun EntryBody(
     addUIState: AddUIState,

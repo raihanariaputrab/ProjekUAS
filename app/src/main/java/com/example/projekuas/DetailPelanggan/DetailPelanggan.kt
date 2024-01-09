@@ -33,7 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.Model.Pelanggan
-import com.example.projekuas.PenyediaViewModel
+import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.DetailUIState
 import com.example.projekuas.ui.theme.PelangganTopAppBar
@@ -42,10 +42,12 @@ import kotlinx.coroutines.launch
 
 object DetailDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = "Detail Pelanggan"
+    override val titleRes = "Detail Kontak"
     const val pelangganId = "itemId"
     val routeWithArgs = "$route/{$pelangganId}"
 }
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
@@ -65,7 +67,7 @@ fun DetailScreen(
             )
         }, floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToEditItem(uiState.value.addEvent.IdPelanggan) },
+                onClick = { navigateToEditItem(uiState.value.detailPelanggan.IdPelanggan) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
 
@@ -85,7 +87,7 @@ fun DetailScreen(
                 // change occurs, the Activity will be recreated and the rememberCoroutineScope will
                 // be cancelled - since the scope is bound to composition.
                 coroutineScope.launch {
-                    viewModel.deleteKontak()
+                    viewModel.deletePelanggan()
                     navigateBack()
                 }
             },
@@ -96,6 +98,7 @@ fun DetailScreen(
             )
     }
 }
+
 @Composable
 private fun ItemDetailsBody(
     detailUIState: DetailUIState,
@@ -108,7 +111,7 @@ private fun ItemDetailsBody(
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
         ItemDetails(
-            pelanggan  = detailUIState.addEvent.toPelanggan(), modifier = Modifier.fillMaxWidth()
+            pelanggan  = detailUIState.detailPelanggan.toPelanggan(), modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedButton(

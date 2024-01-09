@@ -25,7 +25,7 @@ fun DetailPelanggan.toPelanggan() = Pelanggan(
 )
 
 data class DetailUIState(
-    val addEvent: DetailPelanggan = DetailPelanggan(),
+    val detailPelanggan: DetailPelanggan = DetailPelanggan(),
 )
 
 fun Pelanggan.toDetailPelanggan(): DetailPelanggan =

@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.projekuas.navigation.PengelolaHalaman
+import com.example.contactapp_with_firebase.navigation.PengelolaHalaman
+import com.example.projekuas.ui.theme.PelangganApp
+
 import com.example.projekuas.ui.theme.theme.ProjekUASTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PengelolaHalaman()
+                    PelangganApp()
                 }
             }
         }

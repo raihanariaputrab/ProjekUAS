@@ -1,4 +1,4 @@
-package com.example.projekuas.navigation
+package com.example.contactapp_with_firebase.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,14 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.projekuas.HalamanHomeView.DestinasiHome
-import com.example.projekuas.HalamanHomeView.HomeScreen
 import com.example.projekuas.AddPelanggan.DestinasiEntry
 import com.example.projekuas.AddPelanggan.HalamanPelanggan
 import com.example.projekuas.DetailPelanggan.DetailDestination
 import com.example.projekuas.DetailPelanggan.DetailScreen
 import com.example.projekuas.EditPelanggan.EditDestination
 import com.example.projekuas.EditPelanggan.EditScreen
+import com.example.projekuas.HalamanHomeView.DestinasiHome
+import com.example.projekuas.HalamanHomeView.HomeScreen
 
 
 @Composable
@@ -36,12 +36,14 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     navController.navigate("${DetailDestination.route}/$itemId")
                     println("itemId: $itemId")
                 })
-
         }
         composable(DestinasiEntry.route) {
-            HalamanPelanggan(navigateBack = { navController.popBackStack() }
-            )
+            HalamanPelanggan(navigateBack = {
+                navController.popBackStack()
+            })
+
         }
+
         composable(
             route = DetailDestination.routeWithArgs,
             arguments = listOf(navArgument(DetailDestination.pelangganId) {
@@ -59,6 +61,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 )
             }
         }
+
         composable(
             route = EditDestination.routeWithArgs,
             arguments = listOf(navArgument(EditDestination.pelangganId) {
