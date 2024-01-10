@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -32,6 +33,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.Model.Pelanggan
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
+import com.example.projekuas.ui.theme.Datas
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 
 object DestinasiHome : DestinasiNavigasi {
@@ -82,7 +84,7 @@ fun HomeScreen(
 }
 @Composable
 fun BodyHome(
-    itemPelanggan: List<Pelanggan>,
+    itemPelanggan: List<Datas>,
     modifier: Modifier = Modifier,
     onSiswaClick: (String) -> Unit = {}
 ) {
@@ -98,7 +100,7 @@ fun BodyHome(
             )
         } else {
             ListPelanggan(
-                itemPelanggan = itemPelanggan,
+                itemDatas = itemPelanggan,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
                 onItemClick = { onSiswaClick(it.idPelanggan) }
@@ -108,19 +110,19 @@ fun BodyHome(
 }
 @Composable
 fun ListPelanggan(
-    itemPelanggan: List<Pelanggan>,
+    itemDatas: List<Datas>,
     modifier: Modifier = Modifier,
-    onItemClick: (Pelanggan) -> Unit
+    onItemClick: (Datas) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
     ) {
-        itemsIndexed(itemPelanggan) { index, pelanggan ->
+        this.items(itemDatas, key = {it.idPelanggan}) {data ->
             DataPelanggan(
-                pelanggan = pelanggan,
+                datas = data,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onItemClick(pelanggan) }
+                    .fillMaxSize()
+                    .clickable { onItemClick(data) }
             )
             Spacer(modifier = Modifier.padding(8.dp))
         }
@@ -129,7 +131,7 @@ fun ListPelanggan(
 
 @Composable
 fun DataPelanggan(
-    pelanggan: Pelanggan,
+    datas: Datas,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -142,17 +144,25 @@ fun DataPelanggan(
         ) {
 
             Text(
-                text = pelanggan.namaPelanggan,
+                text = datas.namaPelanggan,
                 style = MaterialTheme.typography.titleLarge,
             )
             Spacer(Modifier.weight(1f))
             Text(
-                text = pelanggan.nomorTelepon,
+                text = datas.nomorTelepon,
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(Modifier.weight(1f))
             Text(
-                text = pelanggan.alamatPelanggan,
+                text = datas.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = datas.jenisKamera,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = datas.jenisLensa,
                 style = MaterialTheme.typography.titleMedium
             )
         }

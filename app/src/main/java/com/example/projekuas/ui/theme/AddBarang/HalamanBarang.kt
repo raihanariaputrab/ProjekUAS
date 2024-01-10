@@ -23,11 +23,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.AddUIState
 import com.example.projekuas.ui.theme.AddUIStateBarang
+import com.example.projekuas.ui.theme.DetailBarang.DetailBarangDestination
 import com.example.projekuas.ui.theme.DetailBarangSewa
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import kotlinx.coroutines.launch
-import kotlin.reflect.KFunction1
 
 object BarangDestination: DestinasiNavigasi {
     override val route = "barang_entry"

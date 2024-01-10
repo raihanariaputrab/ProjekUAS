@@ -34,7 +34,7 @@ class PelangganRepositoryImpl(private val firestore: FirebaseFirestore) : SewaRe
             // Update the Kontak with the Firestore-generated DocumentReference
             firestore.collection("Pelanggan").document(documentReference.id)
                 .set(pelanggan.copy(idPelanggan = documentReference.id))
-            "Berhasil + ${documentReference.id}"
+            documentReference.id
         } catch (e: Exception) {
             Log.w(ContentValues.TAG, "Error adding document", e)
             "Gagal $e"

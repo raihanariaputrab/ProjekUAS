@@ -29,3 +29,49 @@ fun BarangSewa.toDetailBarangSewa(): DetailBarangSewa =
 fun BarangSewa.toUIStateBarangSewa(): AddUIStateBarang = AddUIStateBarang(
     detailBarangSewa = this.toDetailBarangSewa()
 )
+
+data class DatasUi(
+    val IdPelanggan: String = "",
+    val NamaPelanggan: String = "",
+    val NomorTelepon: String = "",
+    val Alamat: String = "",
+    val JenisKamera: String = "",
+    val JenisLensa: String = ""
+)
+
+
+data class DetailUIDatas(
+    val datasUi: DatasUi = DatasUi()
+)
+fun Datas.toDatasUi(): DatasUi =
+    DatasUi(
+        IdPelanggan = idPelanggan,
+        NamaPelanggan = namaPelanggan,
+        NomorTelepon = nomorTelepon,
+        Alamat = alamat,
+        JenisKamera = jenisKamera,
+        JenisLensa = jenisLensa
+    )
+
+fun DatasUi.toDatas(): Datas =
+    Datas(
+        idPelanggan = IdPelanggan,
+        namaPelanggan = NamaPelanggan,
+        nomorTelepon = NomorTelepon,
+        alamat = Alamat,
+        jenisKamera = JenisKamera,
+        jenisLensa = JenisLensa
+    )
+
+
+//untuk menampung data gabungan
+data class Datas(
+    val idPelanggan: String ,
+    val namaPelanggan: String,
+    val nomorTelepon: String ,
+    val alamat: String ,
+    val jenisKamera: String,
+    val jenisLensa: String ,
+) {
+    constructor() : this("", "", "", "", "", "")
+}

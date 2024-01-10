@@ -14,7 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
+import com.example.projekuas.ui.theme.AddBarang.BarangViewModel
 import com.example.projekuas.ui.theme.AddUIState
+import com.example.projekuas.ui.theme.AddUIStateBarang
+import com.example.projekuas.ui.theme.DetailBarangSewa
 import com.example.projekuas.ui.theme.DetailPelanggan
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 import kotlinx.coroutines.launch
@@ -30,7 +33,7 @@ fun HalamanPelanggan(
     navigateBack: () -> Unit,
     navigateToBarang: () -> Unit,
     modifier: Modifier = Modifier,
-    pelangganViewModel: PelangganViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    pelangganViewModel: BarangViewModel = viewModel(factory = PenyediaViewModel.Factory),
 
     ) {
     val coroutineScope = rememberCoroutineScope()
@@ -54,13 +57,16 @@ fun HalamanPelanggan(
             onSaveClick = {
                 coroutineScope.launch {
                     pelangganViewModel.addPelanggan()
+                    pelangganViewModel.addBarangSewa()
                     navigateToBarang()
                 }
             },
             modifier = Modifier
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            addUIStateBarang = pelangganViewModel.addUIStateBarang,
+            onBarangValueChange = pelangganViewModel::updateAddUIState
         )
     }
 }
@@ -68,7 +74,9 @@ fun HalamanPelanggan(
 @Composable
 fun EntryBody(
     addUIState: AddUIState,
+    addUIStateBarang: AddUIStateBarang,
     onPelangganValueChange: (DetailPelanggan) -> Unit,
+    onBarangValueChange: (DetailBarangSewa) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -81,6 +89,11 @@ fun EntryBody(
             onValueChange = onPelangganValueChange,
             modifier = Modifier.fillMaxWidth()
         )
+        FormInputBarang(
+            detailBarangSewa = addUIStateBarang.detailBarangSewa,
+            onValueChangeB = onBarangValueChange,
+            modifier = Modifier.fillMaxWidth()
+            )
         Button(
             onClick = onSaveClick,
             shape = MaterialTheme.shapes.small,
@@ -128,5 +141,36 @@ fun FormInput(
             singleLine = true
         )
 
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormInputBarang(
+    detailBarangSewa: DetailBarangSewa,
+    modifier: Modifier = Modifier,
+    onValueChangeB : (DetailBarangSewa) -> Unit = {},
+    enabled: Boolean = true
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        OutlinedTextField(
+            value = detailBarangSewa.JenisKamera,
+            onValueChange = { onValueChangeB(detailBarangSewa.copy(JenisKamera = it)) },
+            label = { Text("Jenis Kamera") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailBarangSewa.JenisLensa,
+            onValueChange = { onValueChangeB(detailBarangSewa.copy(JenisLensa = it)) },
+            label = { Text("Jenis Lensa") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
     }
 }

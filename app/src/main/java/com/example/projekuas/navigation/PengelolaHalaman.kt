@@ -1,4 +1,4 @@
-package com.example.contactapp_with_firebase.navigation
+package com.example.projekuas.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -46,15 +46,14 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     println("itemId: $itemId")
                 })
         }
-        composable(DestinasiEntry.route) {
-            HalamanPelanggan(navigateBack = {
-                navController.popBackStack()
-            },
-                navigateToBarang = {navController.navigate(BarangDestination.route)})
-
+        composable(route = DestinasiEntry.route){
+            HalamanPelanggan(
+                navigateBack = { navController.popBackStack() },
+                navigateToBarang = { navController.navigate(DestinasiHome.route) })
         }
-        composable(BarangDestination.route){
-            HalamanBarang(navigateBack = { navController.popBackStack()})
+        composable(route = BarangDestination.route)
+        {
+            HalamanBarang(navigateBack = { navController.navigate(DestinasiHome.route) })
         }
 
         composable(

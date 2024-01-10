@@ -39,7 +39,7 @@ fun Pelanggan.toUIStatePelanggan(): AddUIState = AddUIState(
 )
 
 data class HomeUIState(
-    val listPelanggan: List<Pelanggan> = listOf(),
+    val listPelanggan: List<Datas> = listOf(),
     val dataLength: Int = 0
 )
 

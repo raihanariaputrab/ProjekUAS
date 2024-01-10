@@ -48,13 +48,16 @@ fun EditScreen(
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.updatePelanggan()
+                    viewModel.updateB()
                     navigateBack()
                 }
             },
             modifier = Modifier
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            addUIStateBarang = viewModel.sewaUiStateB,
+            onBarangValueChange = viewModel::updateUIState
         )
     }
 }

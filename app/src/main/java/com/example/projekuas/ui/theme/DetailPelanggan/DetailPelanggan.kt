@@ -35,9 +35,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.Model.Pelanggan
 import com.example.projekuas.ui.theme.PenyediaViewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
+import com.example.projekuas.ui.theme.Datas
+import com.example.projekuas.ui.theme.DetailUIDatas
 import com.example.projekuas.ui.theme.DetailUIState
 import com.example.projekuas.ui.theme.DetailViewMoedlPelanggan.DetailPelangganViewModel
 import com.example.projekuas.ui.theme.PelangganTopAppBar
+import com.example.projekuas.ui.theme.toDatas
 import com.example.projekuas.ui.theme.toPelanggan
 import kotlinx.coroutines.launch
 
@@ -57,7 +60,7 @@ fun DetailScreen(
     modifier: Modifier = Modifier,
     viewModel: DetailPelangganViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
-    val uiState = viewModel.uiState.collectAsState()
+    val uiState = viewModel.b
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
@@ -102,7 +105,7 @@ fun DetailScreen(
 
 @Composable
 private fun ItemDetailsBody(
-    detailUIState: DetailUIState,
+    detailUIState: DetailUIDatas,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -112,7 +115,8 @@ private fun ItemDetailsBody(
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
         ItemDetails(
-            pelanggan  = detailUIState.detailPelanggan.toPelanggan(), modifier = Modifier.fillMaxWidth()
+            datas  = detailUIState.datasUi.toDatas(),
+            modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedButton(
@@ -138,8 +142,8 @@ private fun ItemDetailsBody(
 
 @Composable
 fun ItemDetails(
-    pelanggan: Pelanggan, modifier: Modifier = Modifier,
-    
+    datas: Datas, modifier: Modifier = Modifier,
+
 ) {
     Card(
         modifier = modifier, colors = CardDefaults.cardColors(
@@ -155,21 +159,35 @@ fun ItemDetails(
         ) {
             ItemDetailsRow(
                 labelResID ="Nama",
-                itemDetail = pelanggan.namaPelanggan,
+                itemDetail = datas.namaPelanggan,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
             )
             ItemDetailsRow(
                 labelResID = "Alamat",
-                itemDetail = pelanggan.alamatPelanggan,
+                itemDetail = datas.alamat,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
             )
             ItemDetailsRow(
                 labelResID ="No. Telpon",
-                itemDetail = pelanggan.nomorTelepon,
+                itemDetail = datas.nomorTelepon,
+                modifier = Modifier.padding(
+                    horizontal = 12.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID ="Jenis Kamera",
+                itemDetail = datas.jenisKamera,
+                modifier = Modifier.padding(
+                    horizontal = 12.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID ="Jenis Lensa",
+                itemDetail = datas.jenisLensa,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )

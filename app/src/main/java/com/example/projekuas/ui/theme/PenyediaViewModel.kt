@@ -6,7 +6,6 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.projekuas.ui.theme.HalamanHomeView.HalamanViewModel
-import com.example.projekuas.ui.theme.AddPelanggan.PelangganViewModel
 import com.example.projekuas.ui.theme.EditPelanggan.EditPelangganViewModel
 import com.example.projekuas.PelangganApplication
 import com.example.projekuas.ui.theme.AddBarang.BarangViewModel
@@ -17,22 +16,19 @@ fun CreationExtras.aplikasiPelanggan(): PelangganApplication =
 object PenyediaViewModel {
     val Factory = viewModelFactory {
 
-        initializer {
-            PelangganViewModel(aplikasiPelanggan().container.sewaRepository)
-        }
 
         initializer {
-            BarangViewModel(aplikasiPelanggan().container.barangRepositori)
+            BarangViewModel(aplikasiPelanggan().container.barangRepositori,aplikasiPelanggan().container.sewaRepository)
         }
         initializer {
-            HalamanViewModel(aplikasiPelanggan().container.sewaRepository)
+            HalamanViewModel(aplikasiPelanggan().container.sewaRepository, aplikasiPelanggan().container.barangRepositori)
         }
         initializer {
-            DetailPelangganViewModel(createSavedStateHandle(), aplikasiPelanggan().container.sewaRepository
+            DetailPelangganViewModel(createSavedStateHandle(), aplikasiPelanggan().container.sewaRepository, aplikasiPelanggan().container.barangRepositori
             )
         }
         initializer {
-            EditPelangganViewModel(createSavedStateHandle(), aplikasiPelanggan().container.sewaRepository
+            EditPelangganViewModel(createSavedStateHandle(), aplikasiPelanggan().container.sewaRepository,aplikasiPelanggan().container.barangRepositori
             )
         }
     }

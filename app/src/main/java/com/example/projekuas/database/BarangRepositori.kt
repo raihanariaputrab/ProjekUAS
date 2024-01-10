@@ -40,7 +40,7 @@ class BarangRepositoriImpl(private val firestore: FirebaseFirestore) : BarangRep
         return try {
             val documentReference = firestore.collection("BarangSewa").add(barangSewa).await()
 
-            firestore.collection("Pelanggan").document(documentReference.id)
+            firestore.collection("BarangSewa").document(documentReference.id)
                 .set(barangSewa.copy(idSewa = documentReference.id))
             "Berhasil + ${documentReference.id}"
         } catch (e: Exception) {
