@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.projekuas.ui.theme.AddBarang.BarangDestination
+import com.example.projekuas.ui.theme.AddBarang.HalamanBarang
 import com.example.projekuas.ui.theme.AddPelanggan.DestinasiEntry
 import com.example.projekuas.ui.theme.AddPelanggan.HalamanPelanggan
 import com.example.projekuas.ui.theme.DetailPelangga.DetailDestination
@@ -47,8 +49,12 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         composable(DestinasiEntry.route) {
             HalamanPelanggan(navigateBack = {
                 navController.popBackStack()
-            })
+            },
+                navigateToBarang = {navController.navigate(BarangDestination.route)})
 
+        }
+        composable(BarangDestination.route){
+            HalamanBarang(navigateBack = { navController.popBackStack()})
         }
 
         composable(

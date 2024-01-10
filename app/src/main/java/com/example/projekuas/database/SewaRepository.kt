@@ -16,7 +16,7 @@ interface SewaRepository {
     suspend fun save(pelanggan: Pelanggan): String
     suspend fun update(pelanggan: Pelanggan)
     suspend fun delete(pelangganId: String)
-    fun getPelangganById(kontakId: String): Flow<Pelanggan>
+    fun getPelangganById(pelangganId: String): Flow<Pelanggan>
 }
 class PelangganRepositoryImpl(private val firestore: FirebaseFirestore) : SewaRepository {
     override fun getAll(): Flow<List<Pelanggan>> = flow {

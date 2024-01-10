@@ -42,3 +42,4 @@ data class HomeUIState(
     val listPelanggan: List<Pelanggan> = listOf(),
     val dataLength: Int = 0
 )
+

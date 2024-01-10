@@ -1,4 +1,4 @@
-package com.example.projekuas.ui.theme.DetailPelangga
+package com.example.projekuas.ui.theme.DetailBarang
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,43 +32,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.projekuas.Model.Pelanggan
-import com.example.projekuas.ui.theme.PenyediaViewModel
+import com.example.projekuas.Model.BarangSewa
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.DetailUIState
-import com.example.projekuas.ui.theme.DetailViewMoedlPelanggan.DetailPelangganViewModel
+import com.example.projekuas.ui.theme.DetailUIStateBarang
 import com.example.projekuas.ui.theme.PelangganTopAppBar
-import com.example.projekuas.ui.theme.toPelanggan
+import com.example.projekuas.ui.theme.PenyediaViewModel
+import com.example.projekuas.ui.theme.toBarangSewa
 import kotlinx.coroutines.launch
 
-object DetailDestination : DestinasiNavigasi {
+object DetailBarangDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = "Detail Pelanggan"
-    const val IdPelanggan = "itemId"
-    val routeWithArgs = "$route/{$IdPelanggan}"
+    override val titleRes = "Detail Barang Sewa"
+    const val IdSewa = "barangId"
+    val routeWithArgs = "$route/{$IdSewa}"
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(
+fun LayarDetail(
     navigateToEditItem: (String) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: DetailPelangganViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: DetailBarangViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
-    val uiState = viewModel.uiState.collectAsState()
+    val uiState2 = viewModel.uiState2.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             PelangganTopAppBar(
-                title = DetailDestination.titleRes,
+                title = DetailBarangDestination.titleRes,
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )
         }, floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToEditItem(uiState.value.detailPelanggan.IdPelanggan) },
+                onClick = { navigateToEditItem(uiState2.value.detailBarangSewa.IdSewa) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
 
@@ -80,15 +79,15 @@ fun DetailScreen(
             }
         }, modifier = modifier
     ) { innerPadding ->
-        ItemDetailsBody(
-            detailUIState = uiState.value,
+        ItemDetailsBodyBarang(
+            detailUIStateBarang = uiState2.value,
             onDelete = {
                 // Note: If the user rotates the screen very fast, the operation may get cancelled
                 // and the item may not be deleted from the Database. This is because when config
                 // change occurs, the Activity will be recreated and the rememberCoroutineScope will
                 // be cancelled - since the scope is bound to composition.
                 coroutineScope.launch {
-                    viewModel.deletePelanggan()
+                    viewModel.deleteBarangSewa()
                     navigateBack()
                 }
             },
@@ -101,8 +100,8 @@ fun DetailScreen(
 }
 
 @Composable
-private fun ItemDetailsBody(
-    detailUIState: DetailUIState,
+private fun ItemDetailsBodyBarang(
+    detailUIStateBarang: DetailUIStateBarang,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -111,8 +110,8 @@ private fun ItemDetailsBody(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
-        ItemDetails(
-            pelanggan  = detailUIState.detailPelanggan.toPelanggan(), modifier = Modifier.fillMaxWidth()
+        ItemDetailsBarang(
+            barangSewa  = detailUIStateBarang.detailBarangSewa.toBarangSewa(), modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedButton(
@@ -135,11 +134,9 @@ private fun ItemDetailsBody(
     }
 }
 
-
 @Composable
-fun ItemDetails(
-    pelanggan: Pelanggan, modifier: Modifier = Modifier,
-    
+fun ItemDetailsBarang(
+    barangSewa: BarangSewa, modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier, colors = CardDefaults.cardColors(
@@ -154,22 +151,15 @@ fun ItemDetails(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             ItemDetailsRow(
-                labelResID ="Nama",
-                itemDetail = pelanggan.namaPelanggan,
+                labelResID ="JenisKamera",
+                itemDetail = barangSewa.jenisKamera,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
             )
             ItemDetailsRow(
-                labelResID = "Alamat",
-                itemDetail = pelanggan.alamatPelanggan,
-                modifier = Modifier.padding(
-                    horizontal = 12.dp
-                )
-            )
-            ItemDetailsRow(
-                labelResID ="No. Telpon",
-                itemDetail = pelanggan.nomorTelepon,
+                labelResID = "Jenis Lensa",
+                itemDetail = barangSewa.jenisLensa,
                 modifier = Modifier.padding(
                     horizontal = 12.dp
                 )
