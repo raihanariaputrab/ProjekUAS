@@ -46,14 +46,14 @@ class EditPelangganViewModel (
 
     init {
         viewModelScope.launch {
-            sewaUiStateB = repositori.getBarangById(pelangganId).filterNotNull().first().toUIStateBarangSewa()
+            sewaUiStateB = repositori.getBarangSewaByPelangganId(pelangganId).filterNotNull().first().toUIStateBarangSewa()
         }
     }
 
     fun updateUIState(addEvent: DetailPelanggan) {
         sewaUiState = sewaUiState.copy(detailPelanggan = addEvent)
     }
-    fun updateUIState(addBarang: DetailBarangSewa){
+    fun updateUIStateB(addBarang: DetailBarangSewa){
         sewaUiStateB = sewaUiStateB.copy(detailBarangSewa = addBarang)
     }
 
@@ -65,6 +65,5 @@ class EditPelangganViewModel (
     suspend fun updateB(){
         repositori.update(sewaUiStateB.detailBarangSewa.toBarangSewa())
     }
-
 
 }

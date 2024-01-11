@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -23,7 +25,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projekuas.navigation.DestinasiNavigasi
 import com.example.projekuas.ui.theme.AddUIState
 import com.example.projekuas.ui.theme.AddUIStateBarang
-import com.example.projekuas.ui.theme.DetailBarang.DetailBarangDestination
 import com.example.projekuas.ui.theme.DetailBarangSewa
 import com.example.projekuas.ui.theme.PelangganTopAppBar
 import com.example.projekuas.ui.theme.PenyediaViewModel

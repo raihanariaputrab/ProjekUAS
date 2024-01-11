@@ -29,7 +29,9 @@ fun EditScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EditPelangganViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EditPelangganViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    pilihanK: List<String>,
+    pilihanL: List<String>
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
@@ -45,6 +47,9 @@ fun EditScreen(
         EntryBody(
             addUIState = viewModel.sewaUiState,
             onPelangganValueChange = viewModel::updateUIState,
+
+
+
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.updatePelanggan()
@@ -57,7 +62,9 @@ fun EditScreen(
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth(),
             addUIStateBarang = viewModel.sewaUiStateB,
-            onBarangValueChange = viewModel::updateUIState
+            onBarangValueChange = viewModel::updateUIStateB,
+            jenisLensa = pilihanL,
+            jenisKamera = pilihanK
         )
     }
 }

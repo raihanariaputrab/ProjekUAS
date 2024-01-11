@@ -144,25 +144,25 @@ fun DataPelanggan(
         ) {
 
             Text(
-                text = datas.namaPelanggan,
+                text = "Nama Pelanggan: ${datas.namaPelanggan}",
                 style = MaterialTheme.typography.titleLarge,
             )
             Spacer(Modifier.weight(1f))
             Text(
-                text = datas.nomorTelepon,
+                text = "ID Pelanggan: ${datas.idPelanggan}",
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(Modifier.weight(1f))
             Text(
-                text = datas.alamat,
+                text = "Alamat: ${datas.alamat}",
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = datas.jenisKamera,
+                text = "Jenis Kamera: ${datas.jenisKamera}",
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = datas.jenisLensa,
+                text = "Jenis Lensa: ${datas.jenisLensa}",
                 style = MaterialTheme.typography.titleMedium
             )
         }

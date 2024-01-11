@@ -6,12 +6,14 @@ data class AddUIStateBarang(
     val detailBarangSewa: DetailBarangSewa = DetailBarangSewa()
 )
 data class DetailBarangSewa(
+    val IdPelanggan: String = "",
     val IdSewa: String = "",
     val JenisKamera: String = "",
     val JenisLensa: String = ""
 )
 
 fun DetailBarangSewa.toBarangSewa() = BarangSewa (
+    idPelanggan = IdPelanggan,
     idSewa = IdSewa,
     jenisKamera = JenisKamera,
     jenisLensa = JenisLensa
@@ -22,6 +24,7 @@ data class DetailUIStateBarang(
 
 fun BarangSewa.toDetailBarangSewa(): DetailBarangSewa =
     DetailBarangSewa(
+        IdPelanggan = idPelanggan,
         IdSewa = idSewa,
         JenisKamera = jenisKamera,
         JenisLensa = jenisLensa,

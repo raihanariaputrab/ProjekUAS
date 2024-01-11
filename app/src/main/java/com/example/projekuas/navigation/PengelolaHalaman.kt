@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.projekuas.Model.sumberdata.Kamera
+import com.example.projekuas.Model.sumberdata.Lensa
 import com.example.projekuas.ui.theme.AddBarang.BarangDestination
 import com.example.projekuas.ui.theme.AddBarang.HalamanBarang
 import com.example.projekuas.ui.theme.AddPelanggan.DestinasiEntry
@@ -48,7 +50,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         }
         composable(route = DestinasiEntry.route){
             HalamanPelanggan(
-                navigateBack = { navController.popBackStack() },
+                navigateBack = { navController.popBackStack() }, pilihanK = Kamera, pilihanL = Lensa,
                 navigateToBarang = { navController.navigate(DestinasiHome.route) })
         }
         composable(route = BarangDestination.route)
@@ -84,7 +86,9 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
             pelangganId?.let {
                 EditScreen(
                     navigateBack = { navController.popBackStack() },
-                    onNavigateUp = { navController.navigateUp() }
+                    onNavigateUp = { navController.navigateUp() },
+                    pilihanL = Lensa,
+                    pilihanK = Kamera
                 )
             }
         }

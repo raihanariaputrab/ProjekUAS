@@ -10,6 +10,7 @@ import com.example.projekuas.ui.theme.DatasUi
 import com.example.projekuas.ui.theme.DetailPelangga.DetailDestination
 import com.example.projekuas.ui.theme.DetailUIDatas
 import com.example.projekuas.ui.theme.DetailUIState
+import com.example.projekuas.ui.theme.toDatasUi
 import com.example.projekuas.ui.theme.toDetailPelanggan
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -34,14 +35,14 @@ class DetailPelangganViewModel(
 
     val dataBasedOnUserId: Flow<Datas> = barangRepositori.getAllBasedOnPelangganId(pelangganId)
         .map { result ->
-            requireNotNull(result) { "Result cannot be null" }
+            requireNotNull(result)
         }
-        .map { (pelanggan, barang) ->
+        .map { (barang, pelanggan) ->
             Datas(
-                idPelanggan = pelanggan.idPelanggan,
-                namaPelanggan = pelanggan.namaPelanggan,
-                alamat = pelanggan.alamatPelanggan,
-                nomorTelepon = pelanggan.nomorTelepon,
+                idPelanggan = pelanggan?.idPelanggan?: "",
+                namaPelanggan = pelanggan?.namaPelanggan ?: "",
+                alamat = pelanggan?.alamatPelanggan ?: "",
+                nomorTelepon = pelanggan?.nomorTelepon ?: "",
                 jenisKamera = barang.jenisKamera,
                 jenisLensa = barang.jenisLensa
             )
@@ -49,10 +50,10 @@ class DetailPelangganViewModel(
         }
         .flowOn(Dispatchers.IO)
     val uiState: StateFlow<DetailUIDatas> =
-        repository.getPelangganById(pelangganId)
+        dataBasedOnUserId
             .filterNotNull()
             .map {
-                DetailUIDatas(datasUi = it.)
+                DetailUIDatas(datasUi = it.toDatasUi())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
@@ -60,9 +61,8 @@ class DetailPelangganViewModel(
             )
 
     suspend fun deletePelanggan() {
-        repository.delete(pelangganId)
+        barangRepositori.delete(pelangganId)
 
     }
-
 
 }

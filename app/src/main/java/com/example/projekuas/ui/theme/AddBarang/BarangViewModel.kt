@@ -9,7 +9,6 @@ import com.example.projekuas.database.BarangRepositori
 import com.example.projekuas.database.SewaRepository
 import com.example.projekuas.ui.theme.AddUIState
 import com.example.projekuas.ui.theme.AddUIStateBarang
-import com.example.projekuas.ui.theme.DetailBarang.DetailBarangDestination
 import com.example.projekuas.ui.theme.DetailBarangSewa
 import com.example.projekuas.ui.theme.DetailPelanggan
 

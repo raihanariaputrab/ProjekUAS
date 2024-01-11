@@ -17,7 +17,6 @@ interface BarangRepositori {
     suspend fun save(barangSewa: BarangSewa): String
     suspend fun update(barangSewa: BarangSewa)
     suspend fun delete(barangSewaId: String)
-    fun getBarangById(barangSewaId: String): Flow<BarangSewa>
 
     fun getAllWithPelanggan(): Flow<List<Pair<BarangSewa,Pelanggan?>>>
 
@@ -54,24 +53,18 @@ class BarangRepositoriImpl(private val firestore: FirebaseFirestore) : BarangRep
     }
 
     override suspend fun delete(barangSewaId: String) {
-        val barangSewaSnapshot = firestore.collection("BarangSewa").whereEqualTo("PelangganId", barangSewaId).get().await()
+        val barangSewaSnapshot = firestore.collection("BarangSewa").whereEqualTo("idPelanggan", barangSewaId).get().await()
         barangSewaSnapshot.documents.forEach { document ->
             document.reference.delete()
         }
 
-        val pelangganSnapshot = firestore.collection("Pelanggan").whereEqualTo("PelangganId", barangSewaId).get().await()
+        val pelangganSnapshot = firestore.collection("Pelanggan").whereEqualTo("idPelanggan", barangSewaId).get().await()
         pelangganSnapshot.documents.forEach { document ->
             document.reference.delete()
         }
     }
 
-    override fun getBarangById(barangSewaId: String): Flow<BarangSewa> {
-        return flow {
-            val snapshot = firestore.collection("BarangSewa").document(barangSewaId).get().await()
-            val barangSewa = snapshot.toObject(BarangSewa::class.java)
-            emit(barangSewa!!)
-        }.flowOn(Dispatchers.IO)
-    }
+
 
     override fun getAllWithPelanggan(): Flow<List<Pair<BarangSewa, Pelanggan?>>> = flow {
         val snapshotBarangSewa = firestore.collection("BarangSewa").get().await()
@@ -86,11 +79,11 @@ class BarangRepositoriImpl(private val firestore: FirebaseFirestore) : BarangRep
 
     override fun getAllBasedOnPelangganId(barangSewaId: String): Flow<Pair<BarangSewa, Pelanggan?>?> = flow {
         val barangSewaSnapshot = firestore.collection("BarangSewa")
-            .whereEqualTo("IdPelanggan", barangSewaId)
+            .whereEqualTo("idPelanggan", barangSewaId)
             .get()
             .await()
         val pelangganSnapshot = firestore.collection("Pelanggan")
-            .whereEqualTo("PelangganId", barangSewaId)
+            .whereEqualTo("idPelanggan", barangSewaId)
             .get()
             .await()
 
@@ -108,7 +101,7 @@ class BarangRepositoriImpl(private val firestore: FirebaseFirestore) : BarangRep
     override fun getBarangSewaByPelangganId(barangSewaId: String): Flow<BarangSewa?> {
         return flow {
             val snapshot = firestore.collection("BarangSewa")
-                .whereEqualTo("PelangganId", barangSewaId)
+                .whereEqualTo("idPelanggan", barangSewaId)
                 .get()
                 .await()
             val barangSewa = snapshot.documents.firstOrNull()?.toObject(BarangSewa::class.java)

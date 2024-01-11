@@ -60,7 +60,7 @@ fun DetailScreen(
     modifier: Modifier = Modifier,
     viewModel: DetailPelangganViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
-    val uiState = viewModel.b
+    val uiState = viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
@@ -71,7 +71,7 @@ fun DetailScreen(
             )
         }, floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToEditItem(uiState.value.detailPelanggan.IdPelanggan) },
+                onClick = { navigateToEditItem(uiState.value.datasUi.IdPelanggan) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
 
