@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Pertemuan7</string>
+    <string name="app_name">Hidayat Sewa Kamera</string>
     <string name="back_button">kembali</string>
     <string name="confirm">konfirmasi</string>
-    <string name="next">lanjut</string>
+    <string name="next">Booking Now</string>
     <string name="cancel">batal</string>
     <string name="Lensa16mm">Lensa 16mm</string>
     <string name="Lensa24mm">Lensa 24mm</string>

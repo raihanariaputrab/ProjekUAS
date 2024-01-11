@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -34,93 +35,68 @@ object DestinasiUtama : DestinasiNavigasi {
 }
 @Composable
 fun HalamanUtama(
-    onNextButtonClicked: () -> Unit,
+    onNextButtonClicked: () -> Unit
 ) {
-    val image = painterResource(id = R.drawable.logokam2)
-    Column(
+    val image = painterResource(id = R.drawable.logo)
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Box(
+        Image(
+            painter = painterResource(id = R.drawable.begron),
+            contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth()
-                .weight(2f)
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.surface)
+                .clip(shape = MaterialTheme.shapes.medium),
+            contentScale = ContentScale.FillHeight
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Card(
-                shape = MaterialTheme.shapes.medium,
-                border = BorderStroke(2.dp, Color.Gray),
+            Image(
+                painter = image,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
-                ) {
-                    Image(
-                        painter = image,
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(MaterialTheme.shapes.medium)
-                            .background(MaterialTheme.colorScheme.primary)
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "Hidayat",
-                        color = Color.Gray,
-                        fontFamily = FontFamily.Cursive,
-                        fontSize = 28.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    )
-                    Text(
-                        text = "Sewa Kamera",
-                        color = MaterialTheme.colorScheme.primary,
-                        fontFamily = FontFamily.Cursive,
-                        fontStyle = FontStyle.Italic,
-                        fontSize = 32.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(350.dp))
-                    Text(
-                        text = "Jl. Brawijaya, Geblagan, Tamantirto, Kec. Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55183",
-                        color = Color.Black,
-                        fontFamily = FontFamily.SansSerif,
-                        fontSize = 12.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    )
-                }
-            }
-        }
-        Button(
-            onClick = onNextButtonClicked,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .background(MaterialTheme.colorScheme.primary)
-        ) {
+                    .size(250.dp)
+                    .clip(shape = MaterialTheme.shapes.large)
+                    .background(MaterialTheme.colorScheme.primary)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Hidayat Sewa Kamera",
+                color = Color.White,
+                fontSize = 28.sp,
+                fontWeight = FontWeight.Bold,
+                fontStyle = FontStyle.Italic
+            )
+            Spacer(modifier = Modifier.height(7.dp))
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.padding_medium))
+                    .weight(1f, false),
+                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
+                verticalAlignment = Alignment.Bottom
+
             ) {
-                Text(
-                    text = stringResource(R.string.next),
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = null,
-                    tint = Color.White
-                )
+                Button(
+                    onClick = onNextButtonClicked,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(stringResource(R.string.next))
+                }
             }
         }
     }
 }
+
+
